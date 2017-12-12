@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var hbs = require('express-handlebars');
+var fortune = require('./lib/fortune');
 
 var port = process.env.PORT || 3000;	
 
@@ -10,7 +11,7 @@ app.set('view engine', 'hbs');
 
 app.get('/',function(req,res){
 	res.type('html');
-	res.render('home');
+	res.render('home',{fortune:fortune.getFortune});
 })
 
 app.get('/about',function(req,res){	
